@@ -1,6 +1,61 @@
-<!-- <app-nav></app-nav> -->
-<app-topnav></app-topnav>
+<!-- <app-topnav></app-topnav>
 <app-sidebar></app-sidebar>
+
 <div class="main-container">
     <router-outlet></router-outlet>
-</div>
+</div> -->
+
+
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row flFlex flexLayout="row" flexLayout.lt-md="column">
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <div class="nav-brand">
+            Admin Material
+        </div>
+        <span class="nav-spacer"></span>
+        <button class="hidden-sm" mat-icon-button [matMenuTriggerFor]="profile">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #profile="matMenu">
+            <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>{{ 'Profile' | translate }}</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>inbox</mat-icon>
+                <span>{{ 'Inbox' | translate }}</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>settings</mat-icon>
+                <span>{{ 'Settings' | translate }}</span>
+            </button>
+        </mat-menu>
+        <button mat-icon-button (click)="onLoggedout()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">
+                <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Dashboard' | translate }}
+            </a>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/report']">
+                <mat-icon class="sidenav-icon">build</mat-icon> Report
+            </a>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/admin']">
+                <mat-icon class="sidenav-icon">people</mat-icon> Admin
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="mb-20 container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

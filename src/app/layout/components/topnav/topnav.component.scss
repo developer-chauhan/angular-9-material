@@ -6,6 +6,13 @@
     top: 0;
     z-index: 1000;
 }
+.menu-spacer {
+  flex: 1 1 auto;
+}
+.mat-toolbar.mat-primary {
+    background: #3f51b5 !important;
+    color: #fff;
+}
 .nav-brand {
     width: 215px;
     text-align: center;

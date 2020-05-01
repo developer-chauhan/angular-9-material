@@ -7,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
     public showMenu: string;
-    constructor() {}
+    public isMenuOpen: boolean = false;
+    constructor() { }
 
     ngOnInit() {
         this.showMenu = '';
     }
-
+    public onSidenavClick(): void {
+        this.isMenuOpen = false;
+    }
     addExpandClass(element: any) {
         if (element === this.showMenu) {
             this.showMenu = '0';

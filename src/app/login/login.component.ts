@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { AuthService } from './../shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,12 +9,21 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private router: Router) {}
+    signinForm: FormGroup;
+    constructor(
+        public fb: FormBuilder,
+        public authService: AuthService,
+        public router: Router
+    ) {
+        this.signinForm = this.fb.group({
+            username: [''],
+            password: ['']
+        })
+    }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
-    onLogin() {
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['/dashboard']);
+    loginUser() {
+        this.authService.signIn(this.signinForm.value)
     }
 }

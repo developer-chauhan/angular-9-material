@@ -12,7 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
-import { NavComponent } from './nav/nav.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 
 @NgModule({
     imports: [
@@ -25,9 +26,10 @@ import { NavComponent } from './nav/nav.component';
         MatInputModule,
         MatMenuModule,
         MatListModule,
-        TranslateModule
+        TranslateModule,
+        FlexLayoutModule
     ],
-    declarations: [LayoutComponent, NavComponent, TopnavComponent, SidebarComponent,]
+    declarations: [LayoutComponent, TopnavComponent, SidebarComponent,]
 
 })
 export class LayoutModule { }
